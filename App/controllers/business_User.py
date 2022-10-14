@@ -31,13 +31,3 @@ def update_business_User(session_id, groupNumber):
         return db.session.commit()
     return None
     
-@app.route('/business_User/<id>/<session_id>', methods=['PUT'])
-@jwt_required()
-def get_notification(session_id, groupNumber):
-    data = get_sessions_by_groupNumber(groupNumber)
-    if data:
-        data.groupNumber=groupNumber
-        db.session.add(data)
-        db.session.commit()
-        return 'Your request has been accepted', 201
-
