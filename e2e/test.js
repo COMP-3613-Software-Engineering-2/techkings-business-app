@@ -22,7 +22,7 @@ before(async function(){
   });
 
   await page.goto(`${host}/static/users`, { waitUntil: 'networkidle2'});
-  await page.goto(`${host}/static/groups`, { waitUntil: 'networkidle2'});
+  await page.goto(`${host}/static/groups`, { waitUntil: 'networkidle3'});
 });
 
 function getHTML(selector){
@@ -108,7 +108,7 @@ context('The /static/users page', ()=>{
 //uses code fro groups
 context('The /static/groups page', ()=>{
 
-  it('Test 1: Should send a http request to /api/groups', async ()=>{
+  it('Test 4: Should send a http request to /api/groups', async ()=>{
     let reqs = [`${host}/api/groups`];
     let count = 0;
 
@@ -120,7 +120,7 @@ context('The /static/groups page', ()=>{
 
   }).timeout(2000);
 
-  it("Test 2: Page should have App Groups as the title", async () => {
+  it("Test 5: Page should have App Groups as the title", async () => {
       expect(await page.title()).to.eql("App Groups")
   });
 
@@ -128,7 +128,7 @@ context('The /static/groups page', ()=>{
  
   //hello im on nick branch
 
-  describe("Test 3: Page should have a users table header", () => {
+  describe("Test 6: Page should have a users table header", () => {
     it("First table header should be 'Id'", async () => {
       const html = await page.$eval('tr>th:nth-child(1)', (e) => e.innerHTML);
       expect(html).to.eql("Id")
