@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}App Groups{% endblock %}
+{% block page %}App Groups{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <div class="row">
+        <p>
+            This is table is renderd on the Server. Flask gets the data from the database and uses jinja templates to dyanmically render this page when a request is sent to <a href="/groups">/groups</a>.
+        </p>
+    </div>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th><th>Groupname</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for group in groups %}
+            <tr>
+                <td>{{group.id}}</td>
+                <td>{{group.groupname}}</td>
+            </tr>
+          {% endfor %}
+        <tbody>
+      </table>
+    </div>
+{% endblock %}

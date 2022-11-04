@@ -14,9 +14,32 @@ function loadTable(users){
     }
 }
 
+//To deal with finding groups
+async function getGroupData(){
+    const response = await fetch('/api/groups');
+    return response.json();
+}
+
+function loadTable(groups){
+    const table = document.querySelector('#result');
+    for(let group of groups){
+        table.innerHTML += `<tr>
+            <td>${group.id}</td>
+            <td>${group.groupname}</td>
+        </tr>`;
+    }
+}
+
+
 async function main(){
     const users = await getUserData();
     loadTable(users);
 }
+
+async function main(){
+    const groups = await getGroupData();
+    loadTable(groups);
+}
+
 
 main();

@@ -4,13 +4,20 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from App.main import create_app
 from App.database import create_db
 from App.models import User
+from App.models import Group
 from App.controllers import (
     create_user,
     get_all_users_json,
     authenticate,
     get_user,
     get_user_by_username,
-    update_user
+    update_user,
+    create_group,
+    get_all_groups_json,
+    authenticate,
+    get_group,
+    get_group_by_groupname,
+    update_group
 )
 
 
@@ -64,6 +71,9 @@ def test_authenticate():
     user = create_user("bob", "bobpass")
     assert authenticate("bob", "bobpass") != None
 
+    group = create_group("bob", "grouppass")
+    assert authenticate2("bob", "grouppass") != None
+
 class UsersIntegrationTests(unittest.TestCase):
 
     def test_create_user(self):
@@ -79,3 +89,19 @@ class UsersIntegrationTests(unittest.TestCase):
         update_user(1, "ronnie")
         user = get_user(1)
         assert user.username == "ronnie"
+
+
+    //testcases for groups
+    def test_create_group(self):
+        group = create_group("Customer Group Number 1", "grouppass")
+        assert group.groupname == "Customer Group Number 1"
+
+    def test_get_all_groups_json(self):
+        groups_json = get_all_groups_json()
+        self.assertListEqual([{"id":1, "groupname":"bob"}, {"id":2, "groupname":"Customer Group Number 1"}], groups_json)
+
+    # Tests data changes in the database
+    def test_update_group(self):
+        update_group(1, "New Cust Group")
+        group = get_group(1)
+        assert group.groupname == "New Cust Group"
