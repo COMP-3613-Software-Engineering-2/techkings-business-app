@@ -22,6 +22,7 @@ before(async function(){
   });
 
   await page.goto(`${host}/static/users`, { waitUntil: 'networkidle2'});
+  await page.goto(`${host}/static/groups`, { waitUntil: 'networkidle2'});
 });
 
 function getHTML(selector){
@@ -62,6 +63,26 @@ context('The /static/users page', ()=>{
       expect(await page.title()).to.eql("App Users")
   });
 
+  //uses this code for groups
+  context('The /static/groups page', ()=>{
+
+    it('Test 1: Should send a http request to /api/groups', async ()=>{
+      let reqs = [`${host}/api/groups`];
+      let count = 0;
+  
+      reqs.forEach(req => {
+        if(requests.includes(req))count++
+      })
+  
+      expect(count).to.equal(1);
+  
+    }).timeout(2000);
+  
+    it("Test 2: Page should have App Groups as the title", async () => {
+        expect(await page.title()).to.eql("App Groups")
+    });
+
+    
   //hello im on nick branch
 
   describe("Test 3: Page should have a users table header", () => {
