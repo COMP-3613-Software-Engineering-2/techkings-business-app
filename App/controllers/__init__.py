@@ -6,4 +6,6 @@ from .business_User import *
 from .auth_business_User import *
 from .customer import *
 from .auth_customer import *
+from .group import *
+from .auth_group import *
 
