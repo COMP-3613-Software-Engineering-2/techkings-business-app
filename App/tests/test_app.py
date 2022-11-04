@@ -91,7 +91,7 @@ class UsersIntegrationTests(unittest.TestCase):
         assert user.username == "ronnie"
 
 
-    //testcases for groups
+    #testcases for groups
     def test_create_group(self):
         group = create_group("Customer Group Number 1", "grouppass")
         assert group.groupname == "Customer Group Number 1"

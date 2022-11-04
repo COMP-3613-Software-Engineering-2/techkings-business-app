@@ -64,7 +64,7 @@ def create_user_command(username, password):
     print(f'{username} created!')
 
 app.cli.add_command(user_cli) # add the group to the cli
-
+app.cli.add_command(group_cli) # add the group to the cli
 ```
 
 Then execute the command invoking with flask cli with command name and the relevant parameters
@@ -72,7 +72,9 @@ Then execute the command invoking with flask cli with command name and the relev
 ```bash
 $ flask user create bob bobpass
 ```
-
+```bash
+$ flask user create Customer Group Customer Grouppass
+```
 
 # Running the Project
 
