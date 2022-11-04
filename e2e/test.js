@@ -64,25 +64,7 @@ context('The /static/users page', ()=>{
   });
 
   //uses this code for groups
-  context('The /static/groups page', ()=>{
-
-    it('Test 1: Should send a http request to /api/groups', async ()=>{
-      let reqs = [`${host}/api/groups`];
-      let count = 0;
-  
-      reqs.forEach(req => {
-        if(requests.includes(req))count++
-      })
-  
-      expect(count).to.equal(1);
-  
-    }).timeout(2000);
-  
-    it("Test 2: Page should have App Groups as the title", async () => {
-        expect(await page.title()).to.eql("App Groups")
-    });
-
-    
+ 
   //hello im on nick branch
 
   describe("Test 3: Page should have a users table header", () => {
@@ -120,6 +102,49 @@ context('The /static/users page', ()=>{
       
   // }).timeout(2000);
 
+
+});
+
+//uses code fro groups
+context('The /static/groups page', ()=>{
+
+  it('Test 1: Should send a http request to /api/groups', async ()=>{
+    let reqs = [`${host}/api/groups`];
+    let count = 0;
+
+    reqs.forEach(req => {
+      if(requests.includes(req))count++
+    })
+
+    expect(count).to.equal(1);
+
+  }).timeout(2000);
+
+  it("Test 2: Page should have App Groups as the title", async () => {
+      expect(await page.title()).to.eql("App Groups")
+  });
+
+  //uses this code for groups
+ 
+  //hello im on nick branch
+
+  describe("Test 3: Page should have a users table header", () => {
+    it("First table header should be 'Id'", async () => {
+      const html = await page.$eval('tr>th:nth-child(1)', (e) => e.innerHTML);
+      expect(html).to.eql("Id")
+    });
+
+    it("Second table header should be 'First Name'", async () => {
+      const html = await page.$eval('tr>th:nth-child(2)', (e) => e.innerHTML);
+      expect(html).to.eql("First Name")
+    });
+
+    it("Third table header should be 'Last Name'", async () => {
+      const html = await page.$eval('tr>th:nth-child(3)', (e) => e.innerHTML);
+      expect(html).to.eql("Last Name")
+    });
+
+  })
 
 });
 
