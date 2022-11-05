@@ -15,7 +15,7 @@ class ICT_team(db.Model):
     def toJSON(self):
         return{
             'id': self.id,
-            'username': self.username
+            'username': self.username,
             'groupname': self.groupname
         }
 
