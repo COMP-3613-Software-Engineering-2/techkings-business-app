@@ -7,7 +7,7 @@ class ICT_team(db.Model):
     groupname =  db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
-    def __init__(self, username, password):
+    def __init__(self, username, groupname, password):
         self.username = username
         self.groupname = groupname
         self.set_password(password)

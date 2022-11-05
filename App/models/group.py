@@ -3,17 +3,17 @@ from App.database import db
 
 class Group(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name =  db.Column(db.String, unique=True, nullable=False)
+    groupname =  db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
-    def __init__(self, name, password):
-        self.name = name
+    def __init__(self, groupname, password):
+        self.groupname = groupname
         self.set_password(password)
 
     def toJSON(self):
         return{
             'id': self.id,
-            'name': self.name,
+            'groupname': self.groupname,
         }
 
     def set_password(self, password):
