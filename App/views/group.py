@@ -14,7 +14,7 @@ group_views = Blueprint('group_views', __name__, template_folder='../templates')
 @group_views.route('/groups', methods=['GET'])
 def get_group_page():
     groups = get_all_groups()
-    return render_template('group.html', groups=groups)
+    return render_template('groups.html', groups=groups)
 
 @group_views.route('/api/groups', methods=['GET'])
 def get_group_action():

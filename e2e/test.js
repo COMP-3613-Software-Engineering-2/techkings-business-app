@@ -22,7 +22,7 @@ before(async function(){
   });
 
   await page.goto(`${host}/static/users`, { waitUntil: 'networkidle2'});
-  await page.goto(`${host}/static/groups`, { waitUntil: 'networkidle3'});
+  await page.goto(`${host}/static/groups`, { waitUntil: 'networkidle2'});
 });
 
 function getHTML(selector){

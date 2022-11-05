@@ -53,7 +53,7 @@ def list_user_command(format):
 @group_cli.command("create", help="Creates a group")
 @click.argument("groupname", default="Customer Group")
 @click.argument("password", default="Customer Grouppass")
-def create_group_command(username, password):
+def create_group_command(groupname, password):
     create_group(groupname, password)
     print(f'{groupname} created!')
 

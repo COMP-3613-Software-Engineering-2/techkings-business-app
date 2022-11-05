@@ -28,12 +28,10 @@ views = [
     index_views
 ]
 
-@app.route
 def add_views(app, views):
     for view in views:
         app.register_blueprint(view)
 
-@app.route
 def loadConfig(app, config):
     app.config['ENV'] = os.environ.get('ENV', 'DEVELOPMENT')
     delta = 7
@@ -52,7 +50,6 @@ def loadConfig(app, config):
     for key, value in config.items():
         app.config[key] = config[key]
 
-@app.route
 def create_app(config={}):
     app = Flask(__name__, static_url_path='/static')
     CORS(app)

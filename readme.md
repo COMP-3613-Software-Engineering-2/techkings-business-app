@@ -73,7 +73,7 @@ Then execute the command invoking with flask cli with command name and the relev
 $ flask user create bob bobpass
 ```
 ```bash
-$ flask user create Customer Group Customer Grouppass
+$ flask user create Customer Group Customer grouppass
 ```
 
 # Running the Project
